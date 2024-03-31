@@ -27,7 +27,7 @@ pub fn create_token(user_id: Uuid) -> String{
         iat,
     };
 
-    let secret = std::env::var("SECRET_AUTH")
+    let secret = std::env::var("AUTH_SECRET")
     .unwrap();
 
     let token = encode(

@@ -27,7 +27,7 @@ async fn main() {
     .compact()
     .init();
 
-    let database_url = std::env::var("DATABASE_AUTH_URL")
+    let database_url = std::env::var("AUTH_DATABASE_URL_PATH")
         .unwrap();
 
     let conn = Database::connect(database_url)

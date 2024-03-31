@@ -31,7 +31,7 @@ pub async fn user_auth<B>(
         (StatusCode::UNAUTHORIZED, Json(json_error))
     })?;
 
-    let secret = std::env::var("SECRET_AUTH")
+    let secret = std::env::var("AUTH_SECRET")
     .unwrap();
 
     let decoded = decode::<Claims>(
