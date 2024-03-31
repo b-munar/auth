@@ -71,7 +71,7 @@ Crea un usuario con los datos brindados, el email del usuario debe ser único.
 {
   "auth": {
     "email": "email@email.com",
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyOWEzYWQ3OC02ZDNjLTQ2ZTMtOWM0Mi04NTdjYTNlYzUyMjAiLCJpYXQiOjE3MTE4NTU1MjgsImV4cCI6MTcxMTg2NjMyOH0.wUf-v4CrIjd8gFxBoUy9L30zR8BKa8h-Gc2rwIj9dFM"
+    "token": "eyJ0eXA..."
   }
 }
 ```
@@ -133,7 +133,7 @@ Inicia sesion de usuario con los datos brindados
 {
   "auth": {
     "email": "email@email.com",
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyOWEzYWQ3OC02ZDNjLTQ2ZTMtOWM0Mi04NTdjYTNlYzUyMjAiLCJpYXQiOjE3MTE4NTU1MjgsImV4cCI6MTcxMTg2NjMyOH0.wUf-v4CrIjd8gFxBoUy9L30zR8BKa8h-Gc2rwIj9dFM"
+    "token": "eyJ0eXA..."
   }
 }
 ```
