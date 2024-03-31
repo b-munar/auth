@@ -1,0 +1,132 @@
+{
+    "info": {
+        "_postman_id": "85788092-d34d-4968-bb60-945b9cae7b83",
+        "name": "axum-auth",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "register user",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost:6050/auth/register",
+                    "path": [
+                        "auth",
+                        "register"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n\"email\": \"email@email.com\",\n\"password\": \"password\",\n\"id\": \"29a3ad78-6d3c-46e3-9c42-857ca3ec5220\"\n}"
+                }
+            }
+        },
+        {
+            "name": "login user",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost:6050/auth/login",
+                    "path": [
+                        "auth",
+                        "login"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n\"email\": \"email@email.com\",\n\"password\": \"password\"\n}"
+                }
+            }
+        },
+        {
+            "name": "auth",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "localhost:6050/auth/auth",
+                    "path": [
+                        "auth",
+                        "auth"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyOWEzYWQ3OC02ZDNjLTQ2ZTMtOWM0Mi04NTdjYTNlYzUyMjAiLCJpYXQiOjE3MTE4NDkyNTIsImV4cCI6MTcxMTg2MDA1Mn0.sBLXq_b3wEtnG98_J2IMvgU0pMEHF5PUfAqDVmUnZl4",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "ping",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "localhost:6050/auth/ping",
+                    "path": [
+                        "auth",
+                        "ping"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                }
+            }
+        },
+        {
+            "name": "delete user",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "localhost:6050/auth/delete",
+                    "path": [
+                        "auth",
+                        "delete"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n\"id\": \"29a3ad78-6d3c-46e3-9c42-857ca3ec5220\"\n}"
+                }
+            }
+        }
+    ]
+}

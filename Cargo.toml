@@ -1,0 +1,26 @@
+[package]
+name = "axum-prototype-auth"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
+members = [".", "entity", "migration"]
+
+[dependencies]
+axum = "0.7.2"
+serde = { version = "1.0.193", features = ["derive"] }
+tokio = { version = "1.35.0", features = ["full"] }
+sea-orm = { version = "0.12", features = [ "sqlx-postgres", "runtime-tokio-rustls", "macros" ] }
+uuid = { version = "1.6.1", features = ["v4"] }
+serde_json = "1.0.108"
+jsonwebtoken = "9.2.0"
+chrono = "0.4.31"
+dotenv = "0.15.0"
+tracing = "0.1.37"
+tracing-subscriber = { version = "0.3.16", features = ["env-filter", "json"]}
+tower-http = { version = "0.5.2", features = ["trace"] }
+entity = { path = "entity" }
+migration = { path = "migration" } 
+sha256 = "1.5.0"
