@@ -346,6 +346,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "auth"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "chrono",
+ "dotenv",
+ "entity",
+ "jsonwebtoken",
+ "migration",
+ "sea-orm",
+ "serde",
+ "serde_json",
+ "sha256",
+ "tokio",
+ "tower-http",
+ "tracing",
+ "tracing-subscriber",
+ "uuid",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -402,27 +423,6 @@ dependencies = [
  "sync_wrapper",
  "tower-layer",
  "tower-service",
-]
-
-[[package]]
-name = "axum-prototype-auth"
-version = "0.1.0"
-dependencies = [
- "axum",
- "chrono",
- "dotenv",
- "entity",
- "jsonwebtoken",
- "migration",
- "sea-orm",
- "serde",
- "serde_json",
- "sha256",
- "tokio",
- "tower-http",
- "tracing",
- "tracing-subscriber",
- "uuid",
 ]
 
 [[package]]

@@ -1,6 +1,6 @@
 FROM rust:1.74-bullseye AS builder
 
-WORKDIR /usr/src/axum-prototype-auth
+WORKDIR /usr/src/auth
 
 COPY Cargo.toml Cargo.lock ./
 
@@ -16,8 +16,8 @@ FROM debian:bullseye-slim
 
 WORKDIR /usr/src/app
 
-COPY --from=builder /usr/src/axum-prototype-auth/target/release/axum-prototype-auth /usr/src/app/axum-prototype-auth
+COPY --from=builder /usr/src/auth/target/release/auth /usr/src/app/auth
 
 EXPOSE 80
 
-CMD ["./axum-prototype-auth"]
+CMD ["./auth"]
