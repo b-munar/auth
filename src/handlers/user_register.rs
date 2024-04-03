@@ -55,12 +55,28 @@ pub async fn user_register(
 
     let hashed_password = digest(payload.password);
 
-    let user_model = user::ActiveModel {
+
+    let mut user_model = user::ActiveModel {
         email: Set(payload.email),
         password: Set(hashed_password),
         id: Set(payload.id),
-        salt: Set("salt".to_string()),
+        role: Set(user::Role::NotRole)
     };
+
+    if payload.role == 1 {
+        user_model.role = Set(user::Role::Sportmen)
+    }
+
+    else if payload.role ==2 {
+        user_model.role = Set(user::Role::Partner)
+    }
+
+    else {
+        let error_email_is_registered = serde_json::json!({
+            "message": "this role no exist",
+        });
+        return Err((StatusCode::BAD_REQUEST, Json(error_email_is_registered)));
+    }
 
     let user_model_insert: user::Model = user_model
         .insert(&state.conn)
@@ -85,6 +101,7 @@ pub struct UserDeserialize {
     email: String,
     password: String,
     id: Uuid,
+    role: i32
 }
 
 #[derive(Serialize, Deserialize)]
