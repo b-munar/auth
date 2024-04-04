@@ -16,7 +16,7 @@ docker compose up
 ```
 
 
-El servicio de autenticación, este hace registro y login de usuario, tambien su funcion principal es la de autenticar.
+El servicio de autenticación, este hace registro y login de usuario (deportistas y usuarios), tambien su funcion principal es la de autenticar.
 
 ## 1. Creación de usuario deportista
 
