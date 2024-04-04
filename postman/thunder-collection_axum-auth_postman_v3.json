@@ -1,0 +1,184 @@
+{
+    "info": {
+        "_postman_id": "ed0440a9-1767-4b27-91a2-c6885e7af69e",
+        "name": "axum-auth",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "register sportman",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost:6050/auth/register",
+                    "path": [
+                        "auth",
+                        "register"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n\"email\": \"sportman@email.com\",\n\"password\": \"password\",\n\"id\": \"29a3ad78-6d3c-46e3-9c42-857ca3ec5220\",\n\"role\": 1\n}"
+                }
+            }
+        },
+        {
+            "name": "login partner",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost:6050/auth/login",
+                    "path": [
+                        "auth",
+                        "login"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n\"email\": \"partner@email.com\",\n\"password\": \"password\"\n}"
+                }
+            }
+        },
+        {
+            "name": "auth",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "localhost:6050/auth/auth",
+                    "path": [
+                        "auth",
+                        "auth"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "auth": {
+                    "type": "bearer",
+                    "bearer": [
+                        {
+                            "key": "token",
+                            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyOGEzYWQ3Ny03ZDNjLTQ3ZTMtOWM0Mi04NThjYTNlYzUyMjIiLCJpYXQiOjE3MTIxOTM4MjAsImV4cCI6MTcxMjIwNDYyMH0.-J_kVirjoF_70ulIWQv36OsgNa_XdkFjMCPj_y_qtc0",
+                            "type": "string"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "ping",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "localhost:6050/auth/ping",
+                    "path": [
+                        "auth",
+                        "ping"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                }
+            }
+        },
+        {
+            "name": "delete user",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "localhost:6050/auth/delete",
+                    "path": [
+                        "auth",
+                        "delete"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n\"id\": \"29a3ad78-6d3c-46e3-9c42-857ca3ec5220\"\n}"
+                }
+            }
+        },
+        {
+            "name": "register partner",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost:6050/auth/register",
+                    "path": [
+                        "auth",
+                        "register"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n\"email\": \"partner@email.com\",\n\"password\": \"password\",\n\"id\": \"28a3ad77-7d3c-47e3-9c42-858ca3ec5222\",\n\"role\": 2\n}"
+                }
+            }
+        },
+        {
+            "name": "login sportman",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "localhost:6050/auth/login",
+                    "path": [
+                        "auth",
+                        "login"
+                    ],
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "6050"
+                },
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n\"email\": \"sportman@email.com\",\n\"password\": \"password\"\n}"
+                }
+            }
+        }
+    ]
+}
