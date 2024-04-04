@@ -20,7 +20,7 @@ impl MigrationTrait for Migration {
                     )
                     .col(ColumnDef::new(User::Email).string().unique_key().not_null())
                     .col(ColumnDef::new(User::Password).string().not_null())
-                    .col(ColumnDef::new(User::Salt).string().not_null())
+                    .col(ColumnDef::new(User::Role).integer().not_null())
                     .to_owned(),
             )
             .await
@@ -39,5 +39,5 @@ enum User {
     Id,
     Email,
     Password,
-    Salt,
+    Role
 }

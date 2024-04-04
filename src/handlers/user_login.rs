@@ -59,7 +59,9 @@ pub async fn user_login(
 
     let token = create_token(user_filter.id);
 
-    let authenticate = serde_json::json!({"auth": {"email":user_filter.email, "token": token}});
+    let role =  user_filter.role as i32;
+
+    let authenticate = serde_json::json!({"auth": {"email":user_filter.email, "token": token, "role": role }});
 
     return Ok((StatusCode::ACCEPTED, Json(authenticate)));
 }

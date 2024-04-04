@@ -2,6 +2,18 @@
 
 use sea_orm::entity::prelude::*;
 
+#[derive(Debug, Clone, PartialEq, Eq, EnumIter, DeriveActiveEnum)]
+#[sea_orm(rs_type = "i32", db_type = "Integer")]
+pub enum Role {
+    #[sea_orm(num_value = 0)]
+    NotRole,
+    #[sea_orm(num_value = 1)]
+    Sportmen,
+    #[sea_orm(num_value = 2)]
+    Partner,
+}
+
+
 #[derive(Clone, Debug, PartialEq, DeriveEntityModel, Eq)]
 #[sea_orm(table_name = "user")]
 pub struct Model {
@@ -10,10 +22,11 @@ pub struct Model {
     #[sea_orm(unique)]
     pub email: String,
     pub password: String,
-    pub salt: String,
+    pub role: Role
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
 pub enum Relation {}
+
 
 impl ActiveModelBehavior for ActiveModel {}
