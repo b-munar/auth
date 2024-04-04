@@ -209,7 +209,7 @@ Inicia sesion de usuario con los datos brindados
 </tbody>
 </table>
 
-## 2. Login de usuarios socios
+## 4. Login de usuarios socios
 
 Inicia sesion de usuario con los datos brindados
 
