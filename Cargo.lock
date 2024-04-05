@@ -345,7 +345,6 @@ dependencies = [
  "entity",
  "jsonwebtoken",
  "migration",
- "rustix 0.38.32",
  "sea-orm",
  "serde",
  "serde_json",
