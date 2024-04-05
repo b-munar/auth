@@ -24,3 +24,4 @@ tower-http = { version = "0.5.2", features = ["trace"] }
 entity = { path = "entity" }
 migration = { path = "migration" } 
 sha256 = "1.5.0"
+rustix = "0.38.32"
