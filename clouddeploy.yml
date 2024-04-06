@@ -6,6 +6,7 @@ description: main application pipeline
 serialPipeline:
  stages:
  - targetId: qsprod
+    profiles: prod
 
 ---
 
