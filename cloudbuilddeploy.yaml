@@ -10,3 +10,6 @@ steps:
       --region=us-central1
       --images=my-app-image=us-east1-docker.pkg.dev/$PROJECT_ID/repo-sub/auth
       --source=./
+
+options:
+  logging: CLOUD_LOGGING_ONLY
