@@ -6,7 +6,7 @@ steps:
     - '-c'
     - > 
       gcloud deploy releases create release-$BUILD_ID
-      --delivery-pipeline=my-demo-app
+      --delivery-pipeline=demo-la-cabra
       --region=us-central1
       --images=my-app-image=us-east1-docker.pkg.dev/$PROJECT_ID/repo-sub/auth
       --source=./
