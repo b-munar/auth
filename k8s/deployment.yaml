@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: $IMAGE_AUTH
+          image: my-app-image
           resources:
             limits:
               memory: "60Mi"
