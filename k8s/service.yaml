@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-auth
+  annotations:
+    cloud.google.com/backend-config: '{"default": "auth-config"}'
+spec:
+  type: NodePort
+  selector:
+    app: auth
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31020
