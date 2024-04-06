@@ -5,7 +5,7 @@ steps:
     args:
     - '-c'
     - > 
-      gcloud deploy releases create release-$BUILD_ID
+      gcloud deploy releases create re-$SHORT_SHA
       --delivery-pipeline=demo-la-cabra
       --region=us-east1
       --images=my-app-image=us-east1-docker.pkg.dev/$PROJECT_ID/repo-sub/auth
