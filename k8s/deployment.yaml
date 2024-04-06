@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+  labels:
+    app: auth
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: $IMAGE_AUTH
+          resources:
+            limits:
+              memory: "60Mi"
+              cpu: "0.08"
+            requests:
+              memory: "60Mi"
+              cpu: "0.08"
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+
+          env:
+            - name: "AUTH_DATABASE_URL_PATH"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: AUTH_DATABASE_URL_PATH
+            - name: "AUTH_SECRET"
+              valueFrom:
+                secretKeyRef:
+                  name: appsecrets 
+                  key: AUTH_SECRET
+
+---
+
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: auth-config
+spec:
+  healthCheck:
+    checkIntervalSec: 30
+    port: 80
+    type: HTTP
+    requestPath: /auth/ping
