@@ -5,15 +5,14 @@ metadata:
 description: main application pipeline
 serialPipeline:
  stages:
- - targetId: prod
-   profiles: []
+ - targetId: qsprod
 
 ---
 
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
- name: prod
+ name: qsprod
 description: production cluster
 gke:
  cluster: projects/$PROJECT_ID/locations/us-east1/clusters/cluster-1
