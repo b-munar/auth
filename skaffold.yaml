@@ -1,5 +1,7 @@
 apiVersion: skaffold/v2beta16
 kind: Config
+profiles:
+  - name: target-1
 deploy:
   kubectl:
     manifests: ["k8s/*.yaml"]
