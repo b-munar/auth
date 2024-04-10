@@ -1,10 +1,10 @@
 use axum::Router;
 
-use sea_orm::{Database, DatabaseConnection};
-
 use dotenv::dotenv;
 
 use routes::auth_router;
+
+use utils::dbconn::{AppState,conn };
 
 mod handlers;
 mod routes;
@@ -13,10 +13,6 @@ mod utils;
 use tower_http::trace::{self, TraceLayer};
 use tracing::Level;
 
-#[derive(Clone)]
-pub struct AppState {
-    conn: DatabaseConnection,
-}
 
 #[tokio::main]
 async fn main() {
@@ -34,13 +30,6 @@ async fn main() {
     axum::serve(listener, app(auth_router(), state)).await.unwrap();
 }
 
-pub async fn conn()->DatabaseConnection{
-    let database_url = std::env::var("AUTH_DATABASE_URL_PATH").unwrap();
-    
-    return Database::connect(database_url)
-        .await
-        .expect("Database connection failed");
-}
 
 pub fn app(auth_router: Router<AppState>, state:AppState) -> Router {
     Router::new().nest("/auth", auth_router).with_state(state)
@@ -73,19 +62,10 @@ mod tests {
     async fn ping() {
         dotenv().ok();
 
+        let state = AppState { conn: conn().await };
 
-        let database_url = std::env::var("AUTH_DATABASE_URL_PATH")
-            .unwrap();
-    
-        let conn = Database::connect(database_url)
-            .await
-            .expect("Database connection failed");
-    
-        let state = AppState { conn };
         let app = app(auth_router(), state);
 
-        // `Router` implements `tower::Service<Request<Body>>` so we can
-        // call it like any tower service, no need to run an HTTP server.
         let response = app
             .oneshot(Request::builder().uri("/auth/ping").body(Body::empty()).unwrap())
             .await
