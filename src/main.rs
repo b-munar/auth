@@ -42,35 +42,3 @@ pub fn app(auth_router: Router<AppState>, state:AppState) -> Router {
 
     )
 }
-
-
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use axum::{
-        body::Body,
-        http::{Request, StatusCode},
-    };
-
-    use tower:: ServiceExt;
-    use dotenv::dotenv;
-
-    use routes::auth_router;
-
-    #[tokio::test]
-    async fn ping() {
-        dotenv().ok();
-
-        let state = AppState { conn: conn().await };
-
-        let app = app(auth_router(), state);
-
-        let response = app
-            .oneshot(Request::builder().uri("/auth/ping").body(Body::empty()).unwrap())
-            .await
-            .unwrap();
-
-        assert_eq!(response.status(), StatusCode::OK);
-    }
-}

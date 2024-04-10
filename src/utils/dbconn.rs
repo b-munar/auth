@@ -8,7 +8,7 @@ pub struct AppState {
 
 pub async fn conn()->DatabaseConnection{
     let database_url = std::env::var("AUTH_DATABASE_URL_PATH").unwrap();
-    
+
     return Database::connect(database_url)
         .await
         .expect("Database connection failed");
