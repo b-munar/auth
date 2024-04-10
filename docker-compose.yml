@@ -28,11 +28,11 @@ services:
       - 6050:80
     networks:
       - auth_net
-    deploy:
-      resources:
-        limits:
-          cpus: '1'
-          memory: 1000M
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '1'
+    #       memory: 1000M
     depends_on:
       auth_db:
         condition: service_started
