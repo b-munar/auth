@@ -89,9 +89,10 @@ pub async fn user_register(
         })
         .unwrap();
 
-        let token = create_token(user_model_insert.id);
 
         let role = user_model_insert.role as i32;
+
+        let token = create_token(user_model_insert.id, role);
 
         let authenticate = serde_json::json!({"auth": {"token": token, "email": user_model_insert.email, "role": role}});
 
