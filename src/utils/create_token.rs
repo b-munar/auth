@@ -15,7 +15,7 @@ use jsonwebtoken::{encode, EncodingKey, Header};
 use serde_json;
 
 
-pub fn create_token(user_id: Uuid) -> String{
+pub fn create_token(user_id: Uuid, role_id: i32) -> String{
 
     let now = chrono::Utc::now();
     let iat = now.timestamp() as usize;
@@ -23,6 +23,7 @@ pub fn create_token(user_id: Uuid) -> String{
 
     let claims = Claims{
         sub: user_id.to_string(),
+        role: role_id,
         exp,
         iat,
     };
@@ -50,5 +51,6 @@ pub fn create_token(user_id: Uuid) -> String{
 pub struct Claims {
     sub: String,
     iat: usize,
-    exp: usize
-}
+    exp: usize,
+    role: i32
+}   

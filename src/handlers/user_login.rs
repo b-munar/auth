@@ -57,9 +57,11 @@ pub async fn user_login(
         return Err((StatusCode::BAD_REQUEST, Json(error_is_valid_password)));
     };
 
-    let token = create_token(user_filter.id);
+    
 
     let role =  user_filter.role as i32;
+
+    let token = create_token(user_filter.id, role);
 
     let authenticate = serde_json::json!({"auth": {"email":user_filter.email, "token": token, "role": role }});
 
