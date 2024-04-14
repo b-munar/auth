@@ -47,7 +47,7 @@ pub async fn user_auth<B>(
     })?
     .claims;
 
-    let decode_result = serde_json::json!({"id": &decoded.sub});
+    let decode_result = serde_json::json!({"id": &decoded.sub, "role": &decoded.role});
 
 
     return Ok((StatusCode::ACCEPTED, Json(decode_result)));
@@ -57,4 +57,5 @@ pub async fn user_auth<B>(
 #[derive(Debug, Deserialize)]
 pub struct Claims {
     sub: String,
+    role: i32
 }
