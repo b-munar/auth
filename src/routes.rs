@@ -2,7 +2,7 @@ use axum::{routing::{post,get,delete}, Router};
 
 use crate::AppState;
 
-use super::handlers::{prelude::user_login, prelude::user_register, prelude::user_auth, prelude::user_delete};
+use super::handlers::{prelude::user_login, prelude::user_register, prelude::user_auth, prelude::user_delete, prelude::ping};
 
 pub fn auth_router() -> Router<AppState> {
     Router::new()
@@ -10,5 +10,6 @@ pub fn auth_router() -> Router<AppState> {
         .route("/register", post(user_register))
         .route("/delete", delete(user_delete))
         .route("/auth", get(user_auth))
+        .route("/ping", get(ping))
 
 }

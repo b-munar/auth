@@ -57,9 +57,11 @@ pub async fn user_login(
         return Err((StatusCode::BAD_REQUEST, Json(error_is_valid_password)));
     };
 
-    let token = create_token(user_filter.id);
+    
 
     let role =  user_filter.role as i32;
+
+    let token = create_token(user_filter.id, role);
 
     let authenticate = serde_json::json!({"auth": {"email":user_filter.email, "token": token, "role": role }});
 
@@ -70,4 +72,46 @@ pub async fn user_login(
 pub struct UserDeserialize {
     email: String,
     password: String,
+}
+
+#[cfg(test)]
+mod tests {
+    use axum::{
+        body::Body,
+        http::{Request, StatusCode, Method},routing::post , Router
+    };
+
+    use tower:: ServiceExt;
+    use dotenv::dotenv;
+
+    use crate::{handlers::user_login::user_login, utils::dbconn::{conn, AppState}};
+
+
+
+    #[tokio::test]
+    async fn test_login() {
+        dotenv().ok();
+
+        let state = AppState { conn: conn().await };
+
+        let app = Router::new()
+            .route("/login", post(user_login))
+            .with_state(state);
+
+        let response = app
+            .oneshot(Request::builder().method(Method::POST).uri("/login")
+            .header("content-type", "application/json")
+            .body(Body::from(
+                r#"{
+                    "email": "sportman@email.com",
+                    "password": "password"
+                }"#,
+            )).unwrap())
+            .await
+            .unwrap();
+
+
+
+        assert_eq!(response.status(), StatusCode::ACCEPTED);
+    }
 }
