@@ -111,3 +111,48 @@ pub struct UserDeserialize {
 pub struct GetUser {
     id: Uuid,
 }
+
+
+#[cfg(test)]
+mod tests {
+    use axum::{
+        body::Body,
+        http::{Request, StatusCode, Method},routing::post , Router
+    };
+
+    use tower:: ServiceExt;
+    use dotenv::dotenv;
+
+    use crate::{handlers::user_register::user_register, utils::dbconn::{conn, AppState}};
+
+
+
+    #[tokio::test]
+    async fn test_register() {
+        dotenv().ok();
+
+        let state = AppState { conn: conn().await };
+
+        let app = Router::new()
+            .route("/register", post(user_register))
+            .with_state(state);
+
+        let response = app
+            .oneshot(Request::builder().method(Method::POST).uri("/register")
+            .header("content-type", "application/json")
+            .body(Body::from(
+                r#"{
+                    "email": "partnerr@email.com",
+                    "password": "password",
+                    "id": "28a3ad87-7d3c-47e3-9c42-858ca3ec5222",
+                    "role": 2
+                }"#,
+            )).unwrap())
+            .await
+            .unwrap();
+
+
+
+        assert_eq!(response.status(), StatusCode::ACCEPTED);
+    }
+}
