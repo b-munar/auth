@@ -153,6 +153,6 @@ mod tests {
 
 
 
-        assert_eq!(response.status(), StatusCode::ACCEPTED);
+        assert_eq!(response.status(), StatusCode::CREATED);
     }
 }
