@@ -6,9 +6,9 @@ steps:
     - '-c'
     - > 
       gcloud deploy releases create re-$SHORT_SHA
-      --delivery-pipeline=demo-la-cabra
+      --delivery-pipeline=pipeline-goat
       --region=us-east1
-      --images=my-app-image=us-east1-docker.pkg.dev/$PROJECT_ID/repo-sub/auth
+      --images=my-app-image=us-east1-docker.pkg.dev/$PROJECT_ID/repo/auth
       --source=./
 
 options:
