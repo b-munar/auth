@@ -6,5 +6,11 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push', 'us-east1-docker.pkg.dev/$PROJECT_ID/repo/auth']
 
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'us-east1-docker.pkg.dev/$PROJECT_ID/repo/auth-test', '-f', 'Dockerfile.develop', '.' ]
+    
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'us-east1-docker.pkg.dev/$PROJECT_ID/repo/auth-test']
+
 options:
   logging: CLOUD_LOGGING_ONLY
